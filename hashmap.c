@@ -137,6 +137,18 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
+    long indice = 0;
+    long primero = indice;
+    Pair *actual = map->buckets[indice];
 
-    return NULL;
+    while(1){
+        actual = map->buckets[indice];
+        
+        if (actual != NULL && actual->key != NULL) break;
+
+        indice++;
+        if(indice == primero) return NULL;
+    }
+    map->current = indice;
+    return actual;
 }
