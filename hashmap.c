@@ -137,8 +137,7 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-    long indice = 0;
-    long primero = indice;
+    long indice = map->current + 1;
     Pair *actual = map->buckets[indice];
 
     while(1){
@@ -147,7 +146,7 @@ Pair * nextMap(HashMap * map) {
         if (actual != NULL && actual->key != NULL) break;
 
         indice++;
-        if(indice == primero) return NULL;
+        if(indice == map->capacity) return NULL;
     }
     map->current = indice;
     return actual;
